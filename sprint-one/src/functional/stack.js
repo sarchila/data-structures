@@ -8,19 +8,17 @@ var makeStack = function(){
   // Implement the methods below
 
   instance.push = function(value){
-    instance[instance.size()] = value;
+    storage[instance.size()] = value;
   };
 
   instance.pop = function(){
-    val = instance[instance.size()-1];
-    delete instance[instance.size()-1];
+    val = storage[instance.size()-1];
+    delete storage[instance.size()-1];
     return val;
   };
 
   instance.size = function(){
-    // minus three because I'm subtracting the 3
-    // built-in functions.
-    return Object.keys(instance).length - 3;
+    return Object.keys(storage).length;
   };
 
   return instance;
