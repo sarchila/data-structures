@@ -1,11 +1,11 @@
 var makeQueue = function(){
-  var instance = {};
+  var instance = {}; // use _.extend here
 
   instance.storage = {};
   instance.length = 0;
   instance.index = 0;
   instance.dqCounter = 0;
-
+// if instanc was extended with queueMethods there would be no assignments here
   instance.enqueue = queueMethods.enqueue;
   instance.dequeue = queueMethods.dequeue;
   instance.size = queueMethods.size;
