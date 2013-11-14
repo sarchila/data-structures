@@ -1,12 +1,23 @@
 var makeQueue = function(){
+<<<<<<< HEAD
 
   var instance = _.extend({},queueMethods);
+=======
+  var instance = {};
+>>>>>>> 0733034f017794670aca24fedf06f3a6ca736f9d
 
   instance.storage = {};
   instance.length = 0;
   instance.index = 0;
   instance.dqCounter = 0;
 
+<<<<<<< HEAD
+=======
+  instance.enqueue = queueMethods.enqueue;
+  instance.dequeue = queueMethods.dequeue;
+  instance.size = queueMethods.size;
+
+>>>>>>> 0733034f017794670aca24fedf06f3a6ca736f9d
   return instance;
 };
 
@@ -28,4 +39,8 @@ var queueMethods = {
   size: function(){
     return this.length;
   }
+<<<<<<< HEAD
 };
+=======
+};
+>>>>>>> 0733034f017794670aca24fedf06f3a6ca736f9d
