@@ -1,14 +1,10 @@
 var makeQueue = function(){
-  var instance = {};
-
+  var instance = _.extend({},queueMethods);
+ 
   instance.storage = {};
   instance.length = 0;
   instance.index = 0;
   instance.dqCounter = 0;
-
-  instance.enqueue = queueMethods.enqueue;
-  instance.dequeue = queueMethods.dequeue;
-  instance.size = queueMethods.size;
 
   return instance;
 };
