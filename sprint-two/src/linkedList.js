@@ -4,7 +4,6 @@ var makeLinkedList = function(){
   var list = {};
   list.head = null;
   list.tail = null;
-  var size = 0; // to track size for romve method
 
   list.addToTail = function(node){
     node = makeNode(node);
@@ -15,7 +14,6 @@ var makeLinkedList = function(){
       list.tail.next = node; // if not the first then tail.next is the node;
       list.tail = node;
     }
-    size++;
   };
 
   list.removeHead = function(){
