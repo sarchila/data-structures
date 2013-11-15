@@ -35,4 +35,30 @@ describe("linkedList", function() {
     linkedList.addToTail(40);
     expect(linkedList.head.next).toEqual(linkedList.tail);
   });
+
+  it("should return head value when one item added", function(){
+    linkedList.addToTail('a');
+    expect(linkedList.removeHead()).toEqual('a');
+  });
+
+  it("should have null head when one item added then removed", function(){
+    linkedList.addToTail('a');
+    linkedList.removeHead();
+    expect(linkedList.head).toEqual(null);
+  });
+
+  it("should have null tail when one item added then removed", function(){
+    linkedList.addToTail('a');
+    linkedList.removeHead();
+    expect(linkedList.tail).toEqual(null);
+  });
+
+  it("should update head when multiple items added then some removed", function(){
+    linkedList.addToTail('a');
+    linkedList.addToTail('b');
+    linkedList.addToTail('c');
+    linkedList.removeHead();
+    linkedList.removeHead();
+    expect(linkedList.head.value).toEqual('c');
+  });
 });
