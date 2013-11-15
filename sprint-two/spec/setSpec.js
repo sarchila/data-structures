@@ -21,4 +21,9 @@ describe("set", function() {
     set.remove('yo');
     expect(set.contains('yo')).toEqual(false);
   });
+  it("it should not increse in size after adding the same value", function() {
+    set.add('yo');
+    set.add('yo');
+    expect(Object.keys(set._storage).length).toEqual(1);
+  });
 });
