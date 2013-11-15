@@ -61,4 +61,26 @@ describe("linkedList", function() {
     linkedList.removeHead();
     expect(linkedList.head.value).toEqual('c');
   });
+
+  it("should return true if passed in value is in list", function(){
+    linkedList.addToTail('a');
+    linkedList.addToTail('b');
+    expect(linkedList.contains('b')).toEqual(true);
+  });
+
+  it("should return false if passed in value is not in list", function(){
+    linkedList.addToTail('a');
+    linkedList.addToTail('b');
+    linkedList.addToTail('c');
+    expect(linkedList.contains('z')).toEqual(false);
+  });
+
+  it("should return false if passed in value is not in list", function(){
+    linkedList.addToTail('a');
+    linkedList.addToTail('b');
+    linkedList.addToTail('c');
+    linkedList.removeHead();
+    linkedList.removeHead();
+    expect(linkedList.contains('b')).toEqual(false);
+  });
 });

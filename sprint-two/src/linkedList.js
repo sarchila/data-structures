@@ -18,14 +18,29 @@ var makeLinkedList = function(){
     size++;
   };
 
-  list.removeHead = function(value){
+  list.removeHead = function(){
     var tempHead = list.head.value;
     list.head = list.head.next;
     if (list.head === null) list.tail = null;
     return tempHead;
   };
 
-  list.contains = function(){
+  list.contains = function(value){
+    var result = false;
+    var check = function(item) {
+      if (item.value === value) {
+        result = true;
+      } else if (item.next !== null) {
+        check(item.next);
+      }
+    };
+
+    if (list.head.value === value) {
+      return true;
+    } else if (list.head.next){
+      check(list.head.next);
+    }
+    return result;
   };
 
   return list;
