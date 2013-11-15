@@ -20,11 +20,10 @@ var treeMethods = {
     if (this.value === target) {
       return true;
     } else {
-      for (var i = 0; i < this.children.length; i++){
-        // dubbger;
-        this.contains.call(this.children[i],target);
-      }
+      var anyChild = _.some(this.children, function(child){
+        return child.contains(target);
+      });
+      return anyChild;
     }
-    return false;
-   }
+  }
 };

@@ -33,6 +33,6 @@ describe("tree", function() {
     var leafCc = branchC.addChild('Cc');
     var branchD = tree.addChild('d');
     var leafDd = branchD.addChild('Dd');
-    expect(tree.contains('Dd')).toEqual(true);
+    expect(tree.contains('Cc')).toEqual(true);
   });
 });
