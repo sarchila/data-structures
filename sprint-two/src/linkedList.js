@@ -1,28 +1,30 @@
 // Note: don't use an array to do this.
 var makeLinkedList = function(){
+
   var list = {};
   list.head = null;
   list.tail = null;
-  var prevVal = null;
+  var size = 0; // to track size for romve method
 
-  list.addToTail = function(value){
-    //add value to end of list
-    list[value] = makeNode(value);
-    // list[prevVal].next = list[value];
-    list.tail = list[value];
-    if (list.head === null){
-      list.head = list[value];
+  list.addToTail = function(node){
+    node = makeNode(node);
+    if (list.head === null){ // check for first push basically
+      list.head = node;
+      list.tail = node;
+    } else {
+      list.tail.next = node; // if not the first then tail.next is the node;
+      list.tail = node;
     }
-    prevVal = value;
-    // list[prevVal] = list[currVal];
+    size++;
   };
 
-  list.removeHead = function(){
-    //removes node from head and returns it
+  list.removeHead = function(value){
+    var tempHead = list.head.value;
+    list.head = list.head.next;
+    return tempHead;
   };
 
   list.contains = function(){
-    //check if node is in tree, boolean
   };
 
   return list;
