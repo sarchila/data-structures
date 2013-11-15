@@ -26,4 +26,13 @@ describe("tree", function() {
     expect(Object.keys(branchA.children).length).toEqual(1);
     expect(Object.keys(branchB.children).length).toEqual(1);
   });
+
+  it("should return true is target is found", function (){
+    var branchB = tree.addChild('b');
+    var branchC = tree.addChild('c');
+    var leafCc = branchC.addChild('Cc');
+    var branchD = tree.addChild('d');
+    var leafDd = branchD.addChild('Dd');
+    expect(tree.contains('Dd')).toEqual(true);
+  });
 });

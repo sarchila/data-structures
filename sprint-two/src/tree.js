@@ -16,6 +16,15 @@ var treeMethods = {
     this.children[addInd] = childNode;
     return childNode;
   },
-  contains: function(){
-  }
+  contains: function(target){
+    if (this.value === target) {
+      return true;
+    } else {
+      for (var i = 0; i < this.children.length; i++){
+        // dubbger;
+        this.contains.call(this.children[i],target);
+      }
+    }
+    return false;
+   }
 };
