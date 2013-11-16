@@ -28,4 +28,13 @@ describe("hashTable", function() {
     hashTable.remove(v1);
     expect(hashTable._storage.get(0)).toEqual([]);
   });
+
+  it("should update key value pair", function(){
+    spyOn(window, 'getIndexBelowMaxForKey').andReturn(0);
+    var v1 = 'val1';
+    var v2 = 'val2';
+    hashTable.insert(v1, v1);
+    hashTable.insert(v1, v2);
+    expect(hashTable.retrieve(v1)).toEqual(v2);
+  });
 });
