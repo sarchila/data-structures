@@ -2,29 +2,41 @@ var makeTree = function(treeVal){
   var newTree = {};
   newTree.value = treeVal;
   newTree.children = [];
+  newTree.parent = null;
 
   newTree.addChild = treeMethods.addChild;
   newTree.contains = treeMethods.contains;
+  newTree.removeFromParent = treeMethods.removeFromParent;
 
   return newTree;
 };
 
 var treeMethods = {
   addChild: function(childValue){
-    addInd = this.children.length;
-    childNode = makeTree(childValue);
-    this.children[addInd] = childNode;
+    var childNode = makeTree(childValue);
+    childNode.parent = this;
+    this.children.push(childNode);
     return childNode;
   },
   contains: function(target){
     if (this.value === target) {
       return true;
     } else {
-      for (var i = 0; i < this.children.length; i++){
-        // dubbger;
-        this.contains.call(this.children[i],target);
-      }
+      var anyChild = _.some(this.children, function(child){
+        return child.contains(target);
+      });
+      return anyChild;
     }
-    return false;
-   }
+  },
+  removeFromParent: function() {
+    if (this.parent !== null) {
+      var kids = this.parent.children;
+      for (var i = 0; i < kids.length; i++) {
+        if (this === kids[i]) {
+          kids.splice(i, 1);
+        }
+      }
+      this.parent = null;
+    }
+  }
 };

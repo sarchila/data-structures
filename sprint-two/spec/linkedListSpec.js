@@ -19,15 +19,15 @@ describe("linkedList", function() {
   // add more tests here to test the functionality of linkedList
   it("should return head and tail after adding to tail only once", function() {
     linkedList.addToTail(23);
-    expect(linkedList.tail).toEqual({value:23, next: null});
-    expect(linkedList.head).toEqual({value:23, next: null});
+    expect(linkedList.tail.value).toEqual(23);
+    expect(linkedList.head.value).toEqual(23);
   });
 
   it("should return head with first value after adding a second value to tail", function() {
     linkedList.addToTail(23);
     linkedList.addToTail(50);
-    expect(linkedList.tail).toEqual({value:50, next: null});
-    expect(linkedList.head).toEqual({value:23,next: {value:50, next: null}});
+    expect(linkedList.tail.value).toEqual(50);
+    expect(linkedList.head.value).toEqual(23);
   });
 
   it("should update '.next' property of head after adding second value to tail", function(){
@@ -82,5 +82,33 @@ describe("linkedList", function() {
     linkedList.removeHead();
     linkedList.removeHead();
     expect(linkedList.contains('b')).toEqual(false);
+  });
+
+  it("should return previous node value", function() {
+    linkedList.addToTail('a');
+    linkedList.addToTail('b');
+    expect(linkedList.tail.previous.value).toEqual(linkedList.head.value);
+  });
+
+  it("should return previous node value after adding three nodes", function() {
+    linkedList.addToTail('a');
+    linkedList.addToTail('b');
+    linkedList.addToTail('c');
+    expect(linkedList.tail.previous.value).toEqual(linkedList.head.next.value);
+  });
+
+  it("should be able to add to head", function() {
+    linkedList.addToHead('a');
+    linkedList.addToHead('b');
+    linkedList.addToHead('c');
+    expect(linkedList.tail.previous.value).toEqual(linkedList.head.next.value);
+  });
+
+  it("should be able to add to remove tail", function() {
+    linkedList.addToHead('a');
+    linkedList.addToHead('b');
+    linkedList.addToHead('c');
+    linkedList.removeTail();
+    expect(linkedList.tail.previous.value).toEqual(linkedList.head.value);
   });
 });

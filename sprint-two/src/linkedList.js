@@ -5,22 +5,49 @@ var makeLinkedList = function(){
   list.head = null;
   list.tail = null;
 
-  list.addToTail = function(node){
-    node = makeNode(node);
+  list.addToTail = function(value){
+    var node = makeNode(value); // make var
     if (list.head === null){ // check for first push basically
       list.head = node;
       list.tail = node;
     } else {
       list.tail.next = node; // if not the first then tail.next is the node;
+      node.previous = list.tail;
       list.tail = node;
+    }
+  };
+
+  list.addToHead = function(value){
+    if (!list.head){ // check for first push basically
+      list.addToTail(value);
+    } else {
+      var node = makeNode(value);
+      list.head.previous = node; // if not the first then tail.next is the node;
+      node.next = list.head;
+      list.head = node;
     }
   };
 
   list.removeHead = function(){
     var tempHead = list.head.value;
     list.head = list.head.next;
-    if (list.head === null) list.tail = null;
+    if (list.head === null){
+      list.tail = null;
+    } else {
+      list.head.previous = null;
+    }
     return tempHead;
+  };
+
+  list.removeTail = function() {
+    var tempTail = list.tail.value;
+    list.tail = list.tail.previous;
+    if (list.tail === null) {
+      list.head = null;
+    } else {
+      list.tail.next = null;
+    }
+    return tempTail;
   };
 
   list.contains = function(value){
@@ -40,7 +67,6 @@ var makeLinkedList = function(){
     }
     return result;
   };
-
   return list;
 };
 
@@ -48,6 +74,7 @@ var makeNode = function(value){
   var node = {};
   node.value = value;
   node.next = null;
+  node.previous = null;
 
   return node;
 };
