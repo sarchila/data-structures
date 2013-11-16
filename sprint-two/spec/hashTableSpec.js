@@ -21,4 +21,11 @@ describe("hashTable", function() {
   });
 
   // add more tests!
+  it("should remove key value pair", function(){
+    spyOn(window, 'getIndexBelowMaxForKey').andReturn(0);
+    var v1 = 'val1', v2 = 'val2';
+    hashTable.insert(v1, v1);
+    hashTable.remove(v1);
+    expect(hashTable._storage.get(0)).toEqual([]);
+  });
 });
