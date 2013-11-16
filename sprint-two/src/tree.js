@@ -6,6 +6,7 @@ var makeTree = function(treeVal){
 
   newTree.addChild = treeMethods.addChild;
   newTree.contains = treeMethods.contains;
+  newTree.removeFromParent = treeMethods.removeFromParent;
 
   return newTree;
 };
@@ -25,6 +26,17 @@ var treeMethods = {
         return child.contains(target);
       });
       return anyChild;
+    }
+  },
+  removeFromParent: function() {
+    if (this.parent !== null) {
+      var kids = this.parent.children;
+      for (var i = 0; i < kids.length; i++) {
+        if (this === kids[i]) {
+          kids.splice(i, 1);
+        }
+      }
+      this.parent = null;
     }
   }
 };
