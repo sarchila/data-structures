@@ -62,20 +62,15 @@ var bstMethods = {
       }
     }
   },
-  depthFirstLog: function(func) {
-    // create empty array
-    // array. push(func(this.value))
-    // if (this.left) func(this.left.value)
-    // if (this.right) func(this.right.value)
-    // return array
+  depthFirstLog: function(func, flat) {
+    var result = [];
+
     if (!this.value) return null;
     else {
-      func(this.value);
-      this.left && this.left.depthFirstLog(func);
-      this.right && this.right.depthFirstLog(func);
+      result.push(func(this.value));
+      this.left && result.push(this.left.depthFirstLog(func));
+      this.right && result.push(this.right.depthFirstLog(func));
     }
-    // iterate and collect all root, left & right values in tree
-      // make those values accessible to the Cb
-      // return the Cb 
+    return flat ? _.flatten(result) : result;
   }
 };
