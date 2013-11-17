@@ -39,23 +39,25 @@ var bstMethods = {
   },
   contains: function(target){
     if (this.value === target){
+      // console.log(this.value);
+      // console.log("==========================");
       return true;
     } else {
-    // else compare this.value and val
-    // if less than, insert() at left
-    // if greater than, insert() at right
-    // if equal to, do nothing
       if (target > this.value) {
         if (this.right === null){
+          // console.log(this.value);
           return false;
         } else {
-          // WRITE
+          // console.log(this.value);
+          return this.right.contains(target);
         }
-      } else if (val < this.value) {
+      } else if (target < this.value) {
         if (this.left === null) {
+          // console.log(this.value);
           return false;
         } else {
-          // WRITE
+          // console.log(this.value);
+          return this.left.contains(target);
         }
       }
     }

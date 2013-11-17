@@ -39,4 +39,11 @@ describe("binarySearchTree", function() {
   it("should place value on right on second branch", function() {
     expect(binarySearchTree.right.right.value).toEqual(14);
   });
+
+  it("should find value in BST", function(){
+    expect(binarySearchTree.contains(6)).toEqual(true);
+    expect(binarySearchTree.contains(13)).toEqual(true);
+    expect(binarySearchTree.contains(4)).toEqual(true);
+    expect(binarySearchTree.contains(5)).toEqual(false);
+  });
 });
