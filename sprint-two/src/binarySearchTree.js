@@ -38,6 +38,27 @@ var bstMethods = {
     }
   },
   contains: function(target){
+    if (this.value === target){
+      return true;
+    } else {
+    // else compare this.value and val
+    // if less than, insert() at left
+    // if greater than, insert() at right
+    // if equal to, do nothing
+      if (target > this.value) {
+        if (this.right === null){
+          return false;
+        } else {
+          // WRITE
+        }
+      } else if (val < this.value) {
+        if (this.left === null) {
+          return false;
+        } else {
+          // WRITE
+        }
+      }
+    }
   },
   depthFirstLog: function() {
   }
