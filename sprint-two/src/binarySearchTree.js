@@ -62,6 +62,20 @@ var bstMethods = {
       }
     }
   },
-  depthFirstLog: function() {
+  depthFirstLog: function(func) {
+    // create empty array
+    // array. push(func(this.value))
+    // if (this.left) func(this.left.value)
+    // if (this.right) func(this.right.value)
+    // return array
+    if (!this.value) return null;
+    else {
+      func(this.value);
+      this.left && this.left.depthFirstLog(func);
+      this.right && this.right.depthFirstLog(func);
+    }
+    // iterate and collect all root, left & right values in tree
+      // make those values accessible to the Cb
+      // return the Cb 
   }
 };

@@ -46,4 +46,11 @@ describe("binarySearchTree", function() {
     expect(binarySearchTree.contains(4)).toEqual(true);
     expect(binarySearchTree.contains(5)).toEqual(false);
   });
+
+  // it("should log every value", function(){
+  //   expect(binarySearchTree.contains(6)).toEqual(true);
+  //   expect(binarySearchTree.contains(13)).toEqual(true);
+  //   expect(binarySearchTree.contains(4)).toEqual(true);
+  //   expect(binarySearchTree.contains(5)).toEqual(false);
+  // });
 });
