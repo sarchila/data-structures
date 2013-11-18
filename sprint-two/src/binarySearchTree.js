@@ -7,6 +7,7 @@ var makeBinarySearchTree = function(value){
   newTree.insert = bstMethods.insert;
   newTree.contains = bstMethods.contains;
   newTree.depthFirstLog = bstMethods.depthFirstLog;
+  newTree.findClosest = bstMethods.findClosest;
 
   return newTree;
 };
@@ -67,10 +68,29 @@ var bstMethods = {
 
     if (!this.value) return null;
     else {
-      result.push(func(this.value));
       this.left && result.push(this.left.depthFirstLog(func));
+      result.push(func(this.value));
       this.right && result.push(this.right.depthFirstLog(func));
     }
     return flat ? _.flatten(result) : result;
+  },
+  findClosest: function(val, closest) {
+    var testVal = this.value;
+    closest = closest || testVal;
+    if (testVal === val || testVal === null) {
+      closest = val;
+      return closest;
+      // check if "testVal" is closer to "val" than "closest", if so, update closest
+    } else if (Math.abs(closest - val) > Math.abs(testVal - val)) {
+      closest = testVal;
+    }
+    // If val is less than testVal, run on left
+    if (val < testVal && this.left) {
+      closest = this.left.findClosest(val, closest);
+    // If val is greater than testVal, run on right
+    } else if (val > testVal && this.right) {
+      closest = this.right.findClosest(val, closest);
+    }
+    return closest;
   }
 };
