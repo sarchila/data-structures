@@ -40,17 +40,35 @@ describe("binarySearchTree", function() {
     expect(binarySearchTree.right.right.value).toEqual(14);
   });
 
-  it("should find value in BST", function(){
+  it("should find value in BST", function() {
     expect(binarySearchTree.contains(6)).toEqual(true);
     expect(binarySearchTree.contains(13)).toEqual(true);
     expect(binarySearchTree.contains(4)).toEqual(true);
     expect(binarySearchTree.contains(5)).toEqual(false);
   });
 
-  // it("should log every value", function(){
-  //   expect(binarySearchTree.contains(6)).toEqual(true);
-  //   expect(binarySearchTree.contains(13)).toEqual(true);
-  //   expect(binarySearchTree.contains(4)).toEqual(true);
-  //   expect(binarySearchTree.contains(5)).toEqual(false);
+  it("should log every value", function(){
+    var inOrder = binarySearchTree.depthFirstLog(function(v) {return v;}, true);
+    expect(inOrder).toEqual([1,3,4,6,7,8,10,13,14]);
+  });
+
+  it("should find closest value in BST", function() {
+    expect(binarySearchTree.findClosest(11)).toEqual(10);
+  // code below makes a bst with a million random numbers from
+  // 0 to 3,000,000
+  //
+  //   var i = 0;
+  //   var b = []
+  //   while ( i < 3000000){
+  //     b.push(i);
+  //     i++;
+  //   }
+  //   b = _.shuffle(b)
+  //   b = b.slice(2000000);
+  //   bst = makeBinarySearchTree();
+  //   _.each(b,function(val){
+  //     bst.insert(val);
+  //   });
   // });
+  });
 });
